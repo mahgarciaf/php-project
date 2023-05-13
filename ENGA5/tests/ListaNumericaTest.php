@@ -5,11 +5,18 @@ use ENGA5\ListaNumerica;
 
 class ListaNumericaTest extends TestCase{
 
-    public function testQuantidadeDeValoresVazio(){
-        $lnq = new ListaNumerica;
-        $lnq->setValores([]);
+    public function testQuantidadeValores($vet, $expected) {
+        $ln = new ListaNumerica;
+        $ln->setValores($vet);
 
-        $this->assertEquals('Invalido', $lnq->verificaQuantidade());
+        $this->assertRquals($expeted, $ln->verificaQuantidade());
+    }
+
+    public function casosdeTestes(): array{
+        return[
+            'Quantidade vazia' => [[], 'Inválido'],
+            'Quantidade menor do que 4' => [[55555, 66666, 77777], 'Invalido']
+    ];
     }
 
 };
